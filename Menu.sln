@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu", "Menu\Menu.csproj", "{73392DA8-0812-4F45-B2A2-BA2CA39ABB8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.WebUI", "Menu\Menu.WebUI.csproj", "{73392DA8-0812-4F45-B2A2-BA2CA39ABB8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Tests", "Menu.Tests\Menu.Tests.csproj", "{1910A637-2B5D-46F2-B7F8-FFCC35062781}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Domain", "Menu.Domain\Menu.Domain.csproj", "{F8307B80-3313-4A09-BAB1-5E2F4A2EEF85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1910A637-2B5D-46F2-B7F8-FFCC35062781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1910A637-2B5D-46F2-B7F8-FFCC35062781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1910A637-2B5D-46F2-B7F8-FFCC35062781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8307B80-3313-4A09-BAB1-5E2F4A2EEF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8307B80-3313-4A09-BAB1-5E2F4A2EEF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8307B80-3313-4A09-BAB1-5E2F4A2EEF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8307B80-3313-4A09-BAB1-5E2F4A2EEF85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
