@@ -17,8 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink( "Menu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink( (string)ViewBag.Title, "Menu", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <ul class="nav nav-pills toolbar">
+                    <li><a href="#" class="glyphicon glyphicon-search btn-circle"></a></li>
+                    <li><a href="#" class="glyphicon glyphicon-filter btn-circle"></a></li>
+                    <li><a href="#" class="glyphicon glyphicon-plus btn-circle"></a></li>
+                </ul>
             </div>
+
+            
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                 </ul>
@@ -26,7 +34,9 @@
         </div>
     </div>
 
+
     <div class="container body-content">
+        
         @RenderBody()
         <hr />
         <footer>

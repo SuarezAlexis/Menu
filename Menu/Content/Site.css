@@ -16,3 +16,21 @@ textarea {
     max-width: 280px;
 }
 
+.toolbar{
+    float: right;
+    margin-top: 10px;
+}
+
+.toolbar > li > a.btn-circle {
+    border-radius: 50%;
+    background-color: #222;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    padding-top: 7px;
+    padding-left: 8px;
+}
+
+.navbar-toggle {
+    margin-left: 12px;
+}
