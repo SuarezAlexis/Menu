@@ -1,0 +1,68 @@
+﻿@using Menu.HtmlHelpers;
+@model Menu.Models.NuevoAlimentoViewModel
+
+<div class="h5 mid-line text-center">
+    <span class="mid-title">Nuevo Alimento</span>
+</div>
+@using (Html.BeginForm("NuevoAlimento","Alimento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-xs-9">
+            @Html.TextBoxFor(m => m.Alimento.Nombre, new { @class = "borderless h4 underlined", placeholder = "Nombre" })
+        </div>
+        <div class="col-xs-1">
+            <span class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="Publico"></span>
+        </div>
+        <div class="col-xs-1">
+            <span class="glyphicon glyphicon-eye-close" data-toggle="tooltip" title="Privado"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            @Html.ImageUpload("Alimento.","Subir foto", "Content/image-icon.png")
+        </div>
+        <div class="col-xs-6">
+            <div class="row rank">
+                <div id="numRank" class="col-xs-3">
+                    3.0
+                </div>
+                <div id="starRank" class="col-xs-9">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 price">
+                    $ 134.50
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">
+                    <span class="fas fa-stopwatch" data-toggle="tooltip" title="Tiempo de espera"></span>
+                </div>
+                <div class="col-xs-9">
+                    60 min.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">
+                    <span class="fa fa-users" data-toggle="tooltip" title="Porciones"></span>
+                </div>
+                <div class="col-xs-9">10</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1">
+                    <span class="fas fa-ruler"></span>
+                </div>
+                <div class="col-xs-9">
+                    810 m.
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

@@ -1,16 +1,17 @@
 ﻿using Menu.Domain.Abstract;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Menu.Domain.Entities
 {
     public class Alimento : IPersistente
     {
         public long ID { get; set; }
+
         public string Nombre { get; set; }
+        [MaxLength(50, ErrorMessage = "Debe tener máximo 50 caracteres" )]
         public TipoAlimento Tipo { get; set; }
         public decimal Precio { get; set; }
         public int Porciones { get; set; }
@@ -19,6 +20,7 @@ namespace Menu.Domain.Entities
         public IEnumerable<Receta> Recetas { get; set; }
         public Usuario Usuario { get; set; }
         public decimal Calificacion { get; set; }
+        public IEnumerable<string> Imagenes { get; set; }
     
         public IPersistente Guardar()
         {
