@@ -48,6 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -112,6 +113,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\InputHelpers.cs" />
     <Compile Include="Models\NuevoAlimentoViewModel.cs" />
+    <Compile Include="Models\TabViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +127,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Alimento\Detalle.cshtml" />
+    <Content Include="Views\Shared\Tabs.cshtml" />
+    <Content Include="Views\Alimento\NuevoAlimento.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

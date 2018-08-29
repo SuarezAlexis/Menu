@@ -4,33 +4,29 @@
 <div class="h5 mid-line text-center">
     <span class="mid-title">Nuevo Alimento</span>
 </div>
-@using (Html.BeginForm("NuevoAlimento","Alimento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("NuevoAlimento", "Alimento", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="row">
         <div class="col-xs-12">
-            @Html.TextBoxFor(m => m.Alimento.Nombre, new { @class = "borderless h4 underlined", placeholder = "Nombre", style = "width: 100%;"})
+            @Html.TextBoxFor(m => m.Alimento.Nombre, new { @class = "borderless h4 underlined", placeholder = "Nombre", style = "width: 100%;" })
         </div>
     </div>
 
     <div class="row">
         <div class="main-pic">
-            @Html.ImageUpload("Alimento.","Subir foto", "Content/image-icon.png")
+            @Html.ImageUpload("Alimento.Imagen", "Subir foto", "Content/image-icon.png", "Content/2.gif")
         </div>
         <div id="privacy" class="pull-left">
             <div class="col-xs-3 pull-left">
-                <span class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="Publico"></span>
+                <span class="glyphicon glyphicon-eye-open text-muted" data-toggle="tooltip" title="Publico"></span>
             </div>
             <div class="col-xs-3 pull-left">
-                <span class="glyphicon glyphicon-eye-close text-muted" data-toggle="tooltip" title="Privado"></span>
+                <span class="glyphicon glyphicon-eye-close" data-toggle="tooltip" title="Privado"></span>
             </div>
+            @Html.HiddenFor(m => m.Alimento.Privacidad)
+            <input name="" type="hidden" />
         </div>
-        <div id="share" class="pull-right">
-            <div class="col-xs-1">
-                <a href="#" class="btn-xs btn-default">
-                    <span class="fa fa-share-alt"></span>
-                </a>
-            </div>
-        </div>
+        
         <div id="valoracion" class="pull-left rank">
             <div id="numRank" class="col-xs-3">
                 3.0
@@ -78,19 +74,22 @@
         <div id="agregar-a-lista" class="pull-left">
             <div class="col-xs-12">
                 <span>
-                    Agregar a 
+                    Agregar a
                 </span>
                 <span>
-                    <input list="listas" name="lista" placeholder="Crear nueva lista" />    
+                    <input list="listas" name="lista" placeholder="Crear nueva lista" />
                 </span>
                 <datalist id="listas">
-                    @foreach(string l in Model.UserLists)
-                    { <option value="@l"></option> }
+                    @foreach (string l in Model.UserLists)
+                    {
+                    <option value="@l"></option> }
                 </datalist>
             </div>
         </div>
+        <!--
         <div id="Tabs">
             @Html.Partial("Tabs", Model.Tabs)
         </div>
+            -->
     </div>
 }

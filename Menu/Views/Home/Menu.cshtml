@@ -38,3 +38,32 @@
         @Html.Action("NuevoAlimento","Alimento")
     </div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('label.upload-img').on('click', function () { $('input#Alimento_Imagen').click(); })
+
+            if (window.File && window.FileReader && window.FormData) {
+                var $inputField = $('#Alimento_Imagen');
+
+                $inputField.on('change', function (e) {
+                    var file = e.target.files[0];
+
+                    if (file) {
+                        if (/^image\//i.test(file.type)) {
+                            readFile(file);
+                        } else {
+                            alert('Not a valid image!');
+                        }
+                    }
+                });
+            } else {
+                alert("File upload is not supported!");
+            }
+
+
+        });
+
+    </script>
+}

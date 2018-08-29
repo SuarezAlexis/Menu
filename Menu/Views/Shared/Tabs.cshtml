@@ -1,0 +1,21 @@
+﻿@using Menu.Models
+@model IEnumerable<TabViewModel>
+
+<div class="col-xs-12">
+    <ul class="nav nav-tabs">
+        @foreach (TabViewModel tab in Model)
+        {
+            <li @(tab.isActive? "class=\"active\"" : "")><a data-toggle="tab" href="#@tab.TabId">@tab.TabLabel</a></li>
+        }
+    </ul>
+
+    <div class="tab-content">
+        @foreach (TabViewModel tab in Model)
+        {
+            <div id="@tab.TabId" class="tab-pane fade @(tab.isActive? "in active" : "")">
+                <h3>@tab.TabLabel</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        }
+    </div>
+</div>

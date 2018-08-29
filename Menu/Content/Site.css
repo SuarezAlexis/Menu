@@ -87,8 +87,8 @@ label[data-content]:hover::after {
     color: #aaa;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+    top: 47%;
+    left: 53%;
 }
 
 label.upload-img:hover {
@@ -106,9 +106,21 @@ label.upload-img:hover {
 
 .rank {
     font-weight: bold;
-    font-size: 0.9em;
 }
 
 .price {
     font-size: 28px;
+}
+
+.main-pic {
+    float: left;
+    width: 45%;
+    position: relative;
+}
+
+#loading {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%,-50%);
 }
