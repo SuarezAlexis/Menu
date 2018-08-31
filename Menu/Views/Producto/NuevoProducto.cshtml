@@ -1,0 +1,35 @@
+﻿@using Menu.HtmlHelpers;
+@using Menu.Domain.Entities
+@model Menu.Models.NuevoProductoViewModel
+
+<div class="h5 mid-line text-center">
+    <span class="mid-title">Nuevo Producto</span>
+</div>
+@using (Html.BeginForm("NuevoProducto", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.ValidationMessageFor(m => m.Producto.Nombre)
+            @Html.TextBoxFor(m => m.Producto.Nombre, new { @class = "borderless h4 underlined", placeholder = "Nombre", style = "width: 100%;" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="main-pic">
+            @Html.ImageUpload("Producto.Imagen", "Subir foto", Url.Content("~/Content/image-icon.png"), Url.Content("~/Content/2.gif"))
+        </div>
+        <div id="Categorias">
+            Categorias
+            <span>
+                <input list="categorias" id="Producto_Categoria" name="Producto.Categoria" placeholder="Categoría" class="form-control"/>
+            </span>
+            <datalist id="categorias">
+                @foreach (Categoria l in Model.Categorias)
+                {
+                    <option value="@l.ID">@l.Nombre</option> 
+                }
+            </datalist>
+
+        </div>
+
+    </div>
+}

@@ -107,12 +107,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlimentoController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\InputHelpers.cs" />
     <Compile Include="Models\NuevoAlimentoViewModel.cs" />
+    <Compile Include="Models\NuevoProductoViewModel.cs" />
     <Compile Include="Models\TabViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,7 +122,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Alimento\Menu.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -129,6 +130,8 @@
     <Content Include="Views\Alimento\Detalle.cshtml" />
     <Content Include="Views\Shared\Tabs.cshtml" />
     <Content Include="Views\Alimento\NuevoAlimento.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Producto\NuevoProducto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

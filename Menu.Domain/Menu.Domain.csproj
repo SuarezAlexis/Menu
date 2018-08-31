@@ -44,6 +44,8 @@
     <Compile Include="Abstract\IPersistent.cs" />
     <Compile Include="Entities\Alimento.cs" />
     <Compile Include="Entities\Lista.cs" />
+    <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Entities\PuntoVenta.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -124,3 +124,7 @@ label.upload-img:hover {
     left: 50%; 
     transform: translate(-50%,-50%);
 }
+
+.ptr {
+    cursor: pointer;
+}

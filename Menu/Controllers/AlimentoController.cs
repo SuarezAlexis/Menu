@@ -11,6 +11,10 @@ namespace Menu.Controllers
 {
     public class AlimentoController : Controller
     {
+        public ActionResult Menu()
+        {
+            return View();
+        }
 
         public PartialViewResult NuevoAlimento()
         {

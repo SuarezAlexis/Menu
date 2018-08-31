@@ -15,8 +15,7 @@ namespace Menu.Domain.Entities
         public TipoAlimento Tipo { get; set; }
         public decimal Precio { get; set; }
         public int Porciones { get; set; }
-        public TimeSpan Espera { get; set; }
-        public string Descripcion { get; set; }
+        public short Espera { get; set; }
         public IEnumerable<Receta> Recetas { get; set; }
         public Usuario Usuario { get; set; }
         public Privacidad Privacidad { get; set; }
@@ -57,7 +56,7 @@ namespace Menu.Domain.Entities
 
     public enum Privacidad
     {
-        PUBLICO,
-        PRIVADO
+        Privado,
+        Publico
     }
 }
