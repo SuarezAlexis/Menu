@@ -18,16 +18,24 @@
             @Html.ImageUpload("Producto.Imagen", "Subir foto", Url.Content("~/Content/image-icon.png"), Url.Content("~/Content/2.gif"))
         </div>
         <div id="Categorias">
-            Categorias
-            <span>
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.Producto.Categoria)
                 <input list="categorias" id="Producto_Categoria" name="Producto.Categoria" placeholder="Categoría" class="form-control"/>
-            </span>
-            <datalist id="categorias">
-                @foreach (Categoria l in Model.Categorias)
-                {
-                    <option value="@l.ID">@l.Nombre</option> 
-                }
-            </datalist>
+                <datalist id="categorias">
+                    @foreach (Categoria l in Model.Categorias)
+                    {
+                        <option value="@l.ID">@l.Nombre</option> 
+                    }
+                </datalist>
+            </div>
+        </div>
+        <div id="Descripcion">
+            <div class="col-xs-6">
+                @Html.LabelFor(m => m.Producto.Descripcion)
+                @Html.TextAreaFor(m => m.Producto.Descripcion, new { @class = "form-control" })
+            </div>
+        </div>
+        <div id="">
 
         </div>
 
