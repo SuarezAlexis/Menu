@@ -7,7 +7,7 @@ using Menu.Domain.Abstract;
 
 namespace Menu.Domain.Entities
 {
-    public class Producto : IPersistente
+    public class Producto
     {
         public long ID { get; set; }
         [MaxLength(50, ErrorMessage = "No puede contener más de 50 carácteres.")]
@@ -16,11 +16,6 @@ namespace Menu.Domain.Entities
         public string Descripcion { get; set; }
         public Categoria Categoria { get; set; }
         public IEnumerable<ProductoPV> PuntosVenta{ get; set; }
-
-        public IPersistente Guardar()
-        {
-            return this;
-        }
     }
 
     public class Categoria
@@ -30,14 +25,9 @@ namespace Menu.Domain.Entities
         public string Nombre { get; set; }
         [MaxLength(128, ErrorMessage = "No puede contener más de 128 carácteres.")]
         public string Descripcion { get; set; }
-
-        public Categoria Guardar()
-        {
-            return this;
-        }
     }
 
-    public class ProductoPV : IPersistente
+    public class ProductoPV
     {
         public long ID { get; set; }
         public Producto Producto { get; set; }
@@ -45,10 +35,5 @@ namespace Menu.Domain.Entities
         public decimal Precio { get; set; }
         [MaxLength(128, ErrorMessage = "No puede contener más de 128 carácteres.")]
         public string Detalles { get; set; }
-
-        public IPersistente Guardar()
-        {
-            return this;
-        }
     }
 }

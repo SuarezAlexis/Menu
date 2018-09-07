@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Menu.Domain.Entities
 {
-    public class Lista : IPersistente
+    public class Lista
     {
         public long ID { get; set; }
         public string Nombre { get; set; }
@@ -21,10 +21,5 @@ namespace Menu.Domain.Entities
 
         public bool Quitar(Alimento item)
         { return this.alimentos.Remove(item); }
-
-        public IPersistente Guardar()
-        {
-            return this;
-        }
     }
 }

@@ -113,9 +113,7 @@ label.upload-img:hover {
 }
 
 .main-pic {
-    float: left;
-    width: 45%;
-    position: relative;
+    margin: 2%;
 }
 
 #loading {

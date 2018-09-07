@@ -168,20 +168,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('PuntoVenta_Contacto') and o.name = 'FK_PUNTOVENTACONTACTO_CONTACTO')
-alter table PuntoVenta_Contacto
-   drop constraint FK_PUNTOVENTACONTACTO_CONTACTO
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('PuntoVenta_Contacto') and o.name = 'FK_PUNTOVENTACONTACTO_PUNTOVENTA')
-alter table PuntoVenta_Contacto
-   drop constraint FK_PUNTOVENTACONTACTO_PUNTOVENTA
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('PuntoVenta_ServicioEntrega') and o.name = 'FK_PUNTOVENTASERVENTREGA_PUNTOVENTA')
 alter table PuntoVenta_ServicioEntrega
    drop constraint FK_PUNTOVENTASERVENTREGA_PUNTOVENTA
@@ -360,13 +346,6 @@ if exists (select 1
            where  id = object_id('PuntoVenta')
             and   type = 'U')
    drop table PuntoVenta
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('PuntoVenta_Contacto')
-            and   type = 'U')
-   drop table PuntoVenta_Contacto
 go
 
 if exists (select 1
@@ -685,17 +664,6 @@ create table PuntoVenta (
 go
 
 /*==============================================================*/
-/* Table: PuntoVenta_Contacto                                   */
-/*==============================================================*/
-create table PuntoVenta_Contacto (
-   ID                   bigint               identity not null,
-   PuntoVentaID         bigint               not null,
-   ContactoID           bigint               not null,
-   constraint PK_PUNTOVENTA_CONTACTO primary key (ID)
-)
-go
-
-/*==============================================================*/
 /* Table: PuntoVenta_ServicioEntrega                            */
 /*==============================================================*/
 create table PuntoVenta_ServicioEntrega (
@@ -710,10 +678,9 @@ go
 /* Table: PuntoVenta_Tag                                        */
 /*==============================================================*/
 create table PuntoVenta_Tag (
-   ID                   bigint               identity not null,
    PuntoVentaID         bigint               not null,
    TagID                bigint               not null,
-   constraint PK_PUNTOVENTA_TAG primary key (ID)
+   constraint PK_PUNTOVENTA_TAG primary key (PuntoVentaID, TagID)
 )
 go
 
@@ -971,16 +938,6 @@ go
 alter table PuntoVenta
    add constraint FK_PUNTOVENTA_TIPOPUNTOVENTA foreign key (TipoPuntoVenta)
       references TipoPuntoVenta (TipoPuntoVenta)
-go
-
-alter table PuntoVenta_Contacto
-   add constraint FK_PUNTOVENTACONTACTO_CONTACTO foreign key (ContactoID)
-      references Contacto (ID)
-go
-
-alter table PuntoVenta_Contacto
-   add constraint FK_PUNTOVENTACONTACTO_PUNTOVENTA foreign key (PuntoVentaID)
-      references PuntoVenta (ID)
 go
 
 alter table PuntoVenta_ServicioEntrega

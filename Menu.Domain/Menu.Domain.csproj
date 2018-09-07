@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,17 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IPersistent.cs" />
+    <Compile Include="Abstract\IDbContext.cs" />
+    <Compile Include="Abstract\IPuntoVentaRepository.cs" />
+    <Compile Include="Concrete\PuntoVentaRepository.cs" />
+    <Compile Include="Concrete\SqlServerDbContext.cs" />
     <Compile Include="Entities\Alimento.cs" />
     <Compile Include="Entities\Lista.cs" />
     <Compile Include="Entities\Producto.cs" />
     <Compile Include="Entities\PuntoVenta.cs" />
+    <Compile Include="Entities\Tag.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Concrete\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

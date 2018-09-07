@@ -1,0 +1,68 @@
+﻿@using Menu.HtmlHelpers;
+@using Menu.Domain.Entities
+@model Menu.Models.NuevoPuntoVentaViewModel
+
+<div class="h5 mid-line text-center">
+    <span class="mid-title">Nuevo Punto de Venta</span>
+</div>
+@using (Html.BeginForm("NuevoPV", "PuntoVenta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.ValidationMessageFor(m => m.PuntoVenta.Nombre)
+            @Html.TextBoxFor(m => m.PuntoVenta.Nombre, new { @class = "borderless h4 underlined", placeholder = "Nombre", style = "width: 100%;" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="main-pic pull-left">
+            @Html.ImageUpload("PuntoVenta.Imagen", "Subir foto", Url.Content("~/Content/image-icon.png"), Url.Content("~/Content/2.gif"))
+        </div>
+        <div id="TipoPV">
+            <div class="col-xs-12">
+                @Html.LabelFor(m => m.PuntoVenta.Tipo)
+                <input list="tipos" id="PuntoVenta_Tipo" name="PuntoVenta.Tipo" placeholder="Tipo" class="form-control input-sm" />
+                <datalist id="tipos">
+                    @foreach (TipoPV t in Model.Tipos)
+                    {
+                        <option value="@t.TipoPuntoVenta">@t.TipoPuntoVenta</option>
+                    }
+                </datalist>
+
+            </div>
+        </div>
+        <div id="Cotacto">
+            <div class="col-xs-12">
+                @Html.LabelFor(m => m.PuntoVenta.Contactos)
+                <span class="input-group">
+                    <input list="tiposContacto" id="PuntoVenta_Contactos_0__Tipo" name="PuntoVenta.Contactos[0].Tipo" placeholder="Tipo" class="pull-left form-control input-sm" style="width:120px;"/>
+                    <datalist id="tiposContacto">
+                        @foreach(string tc in Model.TiposContacto)
+                        { <option value="@tc">@tc</option> }
+                    </datalist>
+                    <input type="text" id="PuntoVenta_Contactos_0__Dato" name="PuntoVenta.Contactos[0].Dato" class="pull-left form-control input-sm" style="width: 150px; margin-left: 10px;"/>
+                </span>
+            </div>
+        </div>
+        <div id="ServiciosEntrega">
+            <div class="col-xs-12">
+                @Html.LabelFor(m => m.PuntoVenta.ServiciosEntrega)
+            </div>
+        </div>
+        <div id="Ubicacion">
+            <div class="col-xs-12">
+                @Html.LabelFor(m => m.PuntoVenta.Ubicaciones)
+
+            </div>
+        </div>
+        <div id="Tags">
+            <div class="col-xs-12">
+                @Html.LabelFor(m => m.PuntoVenta.Tags)
+            </div>
+        </div>
+        <div id="Productos">
+            <div class="col-xs-12">
+                @Html.LabelFor(m => m.PuntoVenta.Productos)
+            </div>
+        </div>
+    </div>
+}

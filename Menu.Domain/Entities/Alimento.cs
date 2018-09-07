@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Menu.Domain.Entities
 {
-    public class Alimento : IPersistente
+    public class Alimento
     {
         public long ID { get; set; }
 
@@ -21,11 +21,6 @@ namespace Menu.Domain.Entities
         public Privacidad Privacidad { get; set; }
         public decimal Calificacion { get; set; }
         public string Imagen { get; set; }
-    
-        public IPersistente Guardar()
-        {
-            return this;
-        }
 
         public IEnumerable<Valoracion> Valoraciones()
         {
@@ -38,11 +33,6 @@ namespace Menu.Domain.Entities
         public short ID { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-
-        public TipoAlimento Guardar()
-        {
-            return this;
-        }
 
     }
 
