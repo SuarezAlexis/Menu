@@ -20,32 +20,27 @@
         <div id="TipoPV">
             <div class="col-xs-12">
                 @Html.LabelFor(m => m.PuntoVenta.Tipo)
-                <input list="tipos" id="PuntoVenta_Tipo" name="PuntoVenta.Tipo" placeholder="Tipo" class="form-control input-sm" />
-                <datalist id="tipos">
-                    @foreach (TipoPV t in Model.Tipos)
-                    {
-                        <option value="@t.TipoPuntoVenta">@t.TipoPuntoVenta</option>
-                    }
-                </datalist>
-
+                @Html.TextBoxFor(m => m.PuntoVenta.Tipo, new { list = "tipos", placeholder = "Tipo", @class = "form-control input-sm" })
             </div>
         </div>
-        <div id="Cotacto">
+        <div id="Cotactos">
             <div class="col-xs-12">
                 @Html.LabelFor(m => m.PuntoVenta.Contactos)
-                <span class="input-group">
-                    <input list="tiposContacto" id="PuntoVenta_Contactos_0__Tipo" name="PuntoVenta.Contactos[0].Tipo" placeholder="Tipo" class="pull-left form-control input-sm" style="width:120px;"/>
-                    <datalist id="tiposContacto">
-                        @foreach(string tc in Model.TiposContacto)
-                        { <option value="@tc">@tc</option> }
-                    </datalist>
-                    <input type="text" id="PuntoVenta_Contactos_0__Dato" name="PuntoVenta.Contactos[0].Dato" class="pull-left form-control input-sm" style="width: 150px; margin-left: 10px;"/>
-                </span>
+                <div id="ListaContactos" class="form-group">
+                    
+                </div>
+                <div class="form-plus-btn text-center">
+                    <span id="addContactoButton" class="glyphicon glyphicon-plus-sign" ></span>
+                </div>
             </div>
         </div>
         <div id="ServiciosEntrega">
             <div class="col-xs-12">
                 @Html.LabelFor(m => m.PuntoVenta.ServiciosEntrega)
+                @Html.TextBoxFor(m => m.PuntoVenta.ServiciosEntrega, new { @class = "input-sm form-control", style = "width: 260px;" })
+                <div class="form-plus-btn text-center">
+                    <span id="addServicioEntregaButton" class="glyphicon glyphicon-plus-sign disabled"></span>
+                </div>
             </div>
         </div>
         <div id="Ubicacion">
@@ -65,4 +60,10 @@
             </div>
         </div>
     </div>
+
+    <div id="datalists">
+        @Html.DataList("tiposContacto", Model.TiposContacto)
+        @Html.DataList("tipos", Model.Tipos)
+    </div>
+
 }

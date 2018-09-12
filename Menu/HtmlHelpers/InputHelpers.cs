@@ -1,11 +1,40 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Web.Mvc;
+using System.Reflection;
 using System.Web.Mvc.Html;
+using System.Collections.Generic;
 
 namespace Menu.HtmlHelpers
 {
     public static class InputHelpers
     {
+        public static MvcHtmlString DataList(this HtmlHelper html, string id, IEnumerable<SelectListItem> datalist)
+        {
+            StringBuilder result = new StringBuilder();
+
+            TagBuilder tag = new TagBuilder("datalist");
+            tag.MergeAttribute("id", id);
+            tag.InnerHtml = "";
+
+            TagBuilder options = new TagBuilder("option");
+            foreach (SelectListItem sli in datalist)
+            {
+                if (sli.Disabled)
+                    options.MergeAttribute("disabled", null);
+                if (sli.Selected)
+                    options.MergeAttribute("selected", null);
+                if (!String.IsNullOrEmpty(sli.Value))
+                    options.InnerHtml = sli.Value;
+                options.MergeAttribute("value", sli.Text);
+                tag.InnerHtml += options.ToString();
+                options = new TagBuilder("option");
+            }
+            result.Append(tag.ToString());
+
+            return MvcHtmlString.Create(result.ToString());
+        }
+
         public static MvcHtmlString ImageUpload(this HtmlHelper html, string name, string datacontent, string source, string loadingImgSrc)
         {
             TagBuilder outerDiv = new TagBuilder("div");

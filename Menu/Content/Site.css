@@ -126,3 +126,39 @@ label.upload-img:hover {
 .ptr {
     cursor: pointer;
 }
+
+a.btn-circle {
+    border-radius: 50%;
+    background-color: #222;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+}
+
+a.btn-circle:hover, a.btn-circle:focus {
+    background-color: #444444;
+}
+
+a.btn-circle > .glyphicon {
+    transform: translate(3%,3%);
+}
+
+span[id^="PuntoVenta_Contactos"] {
+    margin-bottom: 10px;
+}
+
+input[id^="PuntoVenta_Contactos"][id$="_Tipo"] {
+    width: 100px;
+}
+
+input[id^="PuntoVenta_Contactos"][id$="_Dato"] {
+    width: 150px; 
+    margin-left: 10px;
+}
+
+[id^="RemovePuntoVenta_Contactos"] {
+    width:20px; 
+    padding-top: 5px; 
+    cursor: pointer;
+}

@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using Menu.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Menu.Models
 {
     public class NuevoPuntoVentaViewModel
     {
         public PuntoVenta PuntoVenta { get; set; }
-        public IEnumerable<TipoPV> Tipos { get; set; }
-        public IEnumerable<string> TiposContacto { get; set; }
+        public IEnumerable<SelectListItem> Tipos { get; set; }
+        public IEnumerable<SelectListItem> TiposContacto { get; set; }
     }
 }

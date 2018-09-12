@@ -28,11 +28,25 @@ namespace Menu.Controllers
             NuevoPuntoVentaViewModel Model = new NuevoPuntoVentaViewModel
             {
                 PuntoVenta = new PuntoVenta(),
-                Tipos = Repo.TiposPV,
-                TiposContacto = Repo.TiposContacto
+                Tipos = TiposPV(Repo.TiposPV),
+                TiposContacto = TiposContacto(Repo.TiposContacto)
                 
             };
             return PartialView(Model);
+        }
+
+        private IEnumerable<SelectListItem> TiposContacto(IEnumerable<string> tipos)
+        {
+            List<SelectListItem> lista = new List<SelectListItem>();
+            foreach(string t in tipos)
+            { lista.Add(new SelectListItem { Text = t }); }
+            return lista;
+        }
+        private IEnumerable<SelectListItem> TiposPV(IEnumerable<TipoPV> tipos)
+        {
+            List<SelectListItem> lista = new List<SelectListItem>();
+            foreach (TipoPV t in tipos) { lista.Add(new SelectListItem { Text = t.TipoPuntoVenta }); }
+            return lista;
         }
     }
 }
