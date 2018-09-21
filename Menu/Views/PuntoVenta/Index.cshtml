@@ -30,180 +30,129 @@
 </div>
 
 @section Scripts {
+    <script src="~/Scripts/PuntoVenta/Contacto.js"></script>
+    <script src="~/Scripts/PuntoVenta/ServicioEntrega.js"></script>
     <script type="text/javascript">
-        class Contacto {
-            static get contactoSpan() { 
-                return '@Html.TextBox("PuntoVenta.Contactos[-].Tipo", null, new { list = "tiposContacto", placeholder = "Tipo", @class = "pull-left form-control input-sm tipo-contacto" })' +
-                        '@Html.TextBox("PuntoVenta.Contactos[-].Dato", null, new { @class = "pull-left form-control input-sm dato-contacto" })' + 
-                        '<span id="RemovePuntoVenta_Contactos_-_" class="glyphicon glyphicon-remove text-center text-danger"></span>'; 
-            }
-
-            static get plusBtn() {
-                return $('#addContactoButton');
-            }
-
-            static get inputGroups() {
-                return $('[id^="PuntoVenta_Contactos"].input-group');
-            }
-
-            static tipo(idx) {
-                return $('[id^="PuntoVenta_Contactos"][id$="_Tipo"]')[idx];
-            }
-
-            static dato(idx) {
-                return $('[id^="PuntoVenta_Contactos"][id$="_Dato"]')[idx];
-            }
-
-            static removeBtn(idx) {
-                return $('[id^="RemovePuntoVenta_Contactos"]')[idx];
-            }
-
-            static agregar(contacto) {
-                $('#ListaContactos').append(contacto.inputGroup);
-                contacto.addEventListeners();
-                Contacto.plusBtn.addClass('disabled');
-                if (Contacto.inputGroups.length > 1) {
-                    $(Contacto.removeBtn(0)).show();
-                } else {
-                    $(contacto.removeBtn).hide();
-                }
-            }
-
-            static agregarNuevo() {
-                var nuevo = new Contacto();    
-                Contacto.agregar(nuevo);
-                return nuevo;
-            }
-
-            static initPlusBtn() {
-                Contacto.plusBtn.on('click', function () {
-                    if (!$(this).hasClass('disabled')) {
-                        Contacto.agregarNuevo();
-                    }
-                });
-            }
-
-            static updatePlusBtn(idx) {
-                if (Contacto.tipo(idx).value && Contacto.dato(idx).value) {
-                    Contacto.plusBtn.removeClass('disabled');
-                }
-                else {
-                    Contacto.plusBtn.addClass('disabled');
-                }
-            }
-
-            constructor() {
-                this.index = Contacto.inputGroups.length > 0 ? Contacto.inputGroups.length : 0;
-                this.inputGroup = document.createElement('span');
-                this.inputGroup.setAttribute('id', 'PuntoVenta_Contactos_' + this.index + '_');
-                this.inputGroup.setAttribute('class', 'input-group');
-                var re1 = new RegExp('\\[-]', 'g');
-                var re2 = new RegExp('_-_', 'g');
-                this.inputGroup.innerHTML = Contacto.contactoSpan.replace(re1, '[' + this.index + ']').replace(re2, '_' + this.index + '_');
-            }
-
-            get index() {
-                return this._index;
-            }
-            set index(idx) {
-                this._index = idx;
-            }
-            get tipo() {
-                return Contacto.tipo(this.index);
-            }
-            get dato() {
-                return Contacto.dato(this.index);
-            }
-            get removeBtn() {
-                return Contacto.removeBtn(this.index);
-            }
-            get inputGroup() {
-                return this._inputGroup;
-            }
-            set inputGroup(inputGroup) {
-                this._inputGroup = inputGroup;
-            }
-
-            updatePlusBtn() {
-                Contacto.updatePlusBtn(this.id[21]);
-            }
-
-            updateDatoField() {
-                var dato = $('#' + this.id.replace('Tipo', 'Dato'));
-                switch (this.value) {
-                    case 'Facebook':
-                        dato.val('http://www.facebook.com/');
-                        break;
-                    case 'Twitter':
-                        dato.val('http://www.twitter.com/');
-                        break;
-                    case 'Celular':
-                    case 'Local':
-                    case 'Whatsapp':
-                        dato.attr('type', 'tel');
-                        dato.attr('pattern', '[0-9]{10}');
-                        dato.attr('title', '10 dígitos');
-                        dato.val('');
-                        break;
-                }
-                //Contacto.plusBtn.addClass('disabled');
-                Contacto.updatePlusBtn(this.id[21]);
-            }
-
-            remove() {
-                this.parentNode.parentNode.removeChild(this.parentNode);
-                if (Contacto.inputGroups.length == 1) {
-                    $(Contacto.removeBtn(0)).hide();
-                }
-                for (var i = this.id[27]; i < Contacto.inputGroups.length; i++) {
-                    var re1 = new RegExp('\\[' + Contacto.inputGroups[i].id[21] + ']', 'g');
-                    var re2 = new RegExp('_' + Contacto.inputGroups[i].id[21] + '_', 'g');
-                    Contacto.inputGroups[i].id = Contacto.inputGroups[i].id.replace(re2, '_' + i + '_');
-                    Contacto.tipo(i).id = Contacto.tipo(i).id.replace(re2, '_' + i + '_');
-                    Contacto.tipo(i).name = Contacto.tipo(i).name.replace(re1, '[' + i + ']');
-                    Contacto.dato(i).id = Contacto.dato(i).id.replace(re2, '_' + i + '_');
-                    Contacto.dato(i).name = Contacto.dato(i).name.replace(re1, '[' + i + ']');
-                    Contacto.removeBtn(i).id = Contacto.removeBtn(i).id.replace(re2, '_' + i + '_');
-                }
-                Contacto.plusBtn.removeClass('disabled');
-            }
-
-            addEventListeners() {
-                $(this.tipo).on('change keyup paste', this.updateDatoField);
-                $(this.dato).on('change keyup paste', this.updatePlusBtn);
-                $(this.removeBtn).on('click', this.remove)
-            }
-        }
-
         $(document).ready(function () {
             Contacto.initPlusBtn();
-            var Contactos = [new Contacto()];
-            Contacto.agregar(Contactos[0]);
+            Contacto.agregar(new Contacto());
+            ServicioEntrega.initPlusBtn();
+            ServicioEntrega.agregar(new ServicioEntrega());
+            $('#Ubicacion_Direccion').on('change keyup paste', function () {
+                if ($(this).val()) {
+                    $('#addLocation').removeClass('disabled');
+                }
+                else {
+                    $('#addLocation').addClass('disabled');
+                }
+            });
+            $('#addLocation').on('click', function () {
+                if (!$(this).hasClass('disabled')) {
+                    var idx = $('#ListaUbicaciones').children().length;
+                    var locationDiv = document.createElement('li');
+                    locationDiv.setAttribute('id', 'PuntoVenta_Ubicaciones_' + idx + '_');
+                    locationDiv.setAttribute('name', 'PuntoVenta.Ubicaciones[' + idx + ']');
+                    var re1 = new RegExp('\\[-]', 'g');
+                    var re2 = new RegExp('_-_', 'g');
+                    locationDiv.innerHTML = $('#ubicacionLi').html().replace(re1, '[' + idx + ']').replace(re2, '_' + idx + '_');
+                    $('#ListaUbicaciones').append(locationDiv);
+                    $('#PuntoVenta_Ubicaciones_' + idx + '__Latitud').val($('#Ubicacion_Latitud').val());
+                    $('#PuntoVenta_Ubicaciones_' + idx + '__Longitud').val($('#Ubicacion_Longitud').val());
+                    $('#PuntoVenta_Ubicaciones_' + idx + '__Descripcion').val($('#Ubicacion_Descripcion').val());
+                    $('#PuntoVenta_Ubicaciones_' + idx + '__Direccion').val($('#Ubicacion_Direccion').val());
+                    if (!$('#Ubicacion_Descripcion').val()) {
+                        $('#Ubicaciones_' + idx + '__Descripcion').html('sin-título');
+                    }
+                    else {
+                        $('#Ubicaciones_' + idx + '__Descripcion').html($('#Ubicacion_Descripcion').val());
+                    }
+                    $('#Ubicaciones_' + idx + '__Direccion').html($('#Ubicacion_Direccion').val());
+                    $('#Ubicacion_Descripcion').val('');
+                    $('#Ubicacion_Direccion').val('');
+                    $('#addLocation').addClass('disabled');
+                    //EventListenenrs
+                    //Agregar marcador
+                }
+            });
         });
 
-    </script>
-}
+        function myMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(initMap);
+            }
+            else {
+                alert('Geolocalización no soportada por el navegador.');
+            }
+        };
 
-@section Styles {
-    <style type="text/css">
-        .form-plus-btn {
-            margin: 10px 0; 
-            width: 280px; 
-            display: table;
+        function initMap(pos) {
+            var mapProp = {
+                center: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                zoom: 14
+            };
+
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: { lat: pos.coords.latitude, lng: pos.coords.longitude }
+            });
+            marker.addListener('dragend', markerDragged);
+
+            updateHiddenLocation(pos.coords.latitude, pos.coords.longitude)
+
+            $('#search-in-map').on('click', function () {
+                if ($('#Ubicacion_Direccion').val()) {
+                    var geocoder = new google.maps.Geocoder;
+                    geocoder.geocode({ 'address': $('#Ubicacion_Direccion').val() }, function (results, status) {
+                        if (status === 'OK') {
+                            if (results[0]) {
+                                map.setCenter(results[0].geometry.location);
+                                marker.setPosition(results[0].geometry.location);
+                            }
+                            else {
+                                window.alert('No logramos encontrar la dirección ingresada, por favor indícala en el mapa.');
+                            }
+                        }
+                        else {
+                            window.alert('Falló la geolocalización. Código de error: ' + status);
+                        }
+                    });
+                }
+                else {
+                    alert('Primero ingresa una dirección para buscarla en el mapa.');
+                }
+            });
+
+            $('#get-from-marker').on('click', function () {
+                var geocoder = new google.maps.Geocoder;
+                geocoder.geocode({ 'location': marker.getPosition() }, function (results, status) {
+                    if (status === 'OK') {
+                        if (results[0]) {
+                            $('#Ubicacion_Direccion').val(results[0].formatted_address);
+                            $('#addLocation').removeClass('disabled');
+                        }
+                        else {
+                            window.alert("No fue posible encontrar la dirección del punto seleccionado.");
+                        }
+                    }
+                    else {
+                        window.alert('Falló la geolocalización. Código de error: ' + status);
+                    }
+                });
+            })
         }
-        .form-plus-btn > .glyphicon-plus-sign {
-            cursor: pointer;
-            color: #000;
+
+        function markerDragged(e) {
+            updateHiddenLocation(e.latLng.lat, e.latLng.lng);
         }
-        .form-plus-btn > .glyphicon-plus-sign:hover {
-            color: #777;
+
+        function updateHiddenLocation(lat,lng) {
+            $('#Ubicacion_Latitud').val(lat);
+            $('#Ubicacion_Longitud').val(lng);
         }
-        .form-plus-btn > span.disabled {
-            color: #aaa;
-            cursor: default;
-        }
-        .form-plus-btn > span.disabled:hover {
-            color: #aaa;
-        }
-    </style>
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbdSaqKOCcG5pEN1H57ONKGeJ1T0ZLL0k&callback=myMap"></script>
 }

@@ -12,5 +12,7 @@ namespace Menu.Domain.Abstract
         TipoPV AgregarTipoPV(string NuevoTipo);
         IEnumerable<string> TiposContacto { get; }
         string AgregarTipoContacto(string NuevoTipo);
+        IEnumerable<ServicioEntrega> ServiciosEntrega { get; }
+        ServicioEntrega AgregarServicioEntrega(string Nombre, string Descripcion);
     }
 }

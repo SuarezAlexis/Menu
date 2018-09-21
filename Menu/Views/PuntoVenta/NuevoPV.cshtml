@@ -37,7 +37,9 @@
         <div id="ServiciosEntrega">
             <div class="col-xs-12">
                 @Html.LabelFor(m => m.PuntoVenta.ServiciosEntrega)
-                @Html.TextBoxFor(m => m.PuntoVenta.ServiciosEntrega, new { @class = "input-sm form-control", style = "width: 260px;" })
+                <div id="ListaServiciosEntrega">
+
+                </div>
                 <div class="form-plus-btn text-center">
                     <span id="addServicioEntregaButton" class="glyphicon glyphicon-plus-sign disabled"></span>
                 </div>
@@ -46,24 +48,68 @@
         <div id="Ubicacion">
             <div class="col-xs-12">
                 @Html.LabelFor(m => m.PuntoVenta.Ubicaciones)
+                <ul id="ListaUbicaciones">
+                    
+                </ul>
+                <span class="input-group">
+                    @Html.TextBox("Ubicacion.Descripcion", null, new { @class = "form-control input-sm", placeholder = "Nombre" })
+                    @Html.TextBox("Ubicacion.Direccion", null, new { @class = "form-control input-sm", placeholder = "Dirección" })
+                    @Html.Hidden("Ubicacion.Latitud")
+                    @Html.Hidden("Ubicacion.Longitud")
+                    <span id="search-in-map" class="btn input-group-addon" title="Buscar dirección en mapa">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                    <span id="get-from-marker" class="btn input-group-addon" title="Obtener dirección del marcador">
+                        <span class="glyphicon glyphicon-map-marker text-center"></span>
+                    </span>
+                    <span id="addLocation" class="btn input-group-addon text-success disabled" title="Agregar dirección">
+                        <span class="glyphicon glyphicon-plus text-center"></span>
+                    </span>
+                </span>
+                <div id="mapWrapper">
+                    <div id="map" style="height: 268px;">
 
+                    </div>
+                </div>
             </div>
         </div>
         <div id="Tags">
             <div class="col-xs-12">
                 @Html.LabelFor(m => m.PuntoVenta.Tags)
             </div>
-        </div>
-        <div id="Productos">
-            <div class="col-xs-12">
-                @Html.LabelFor(m => m.PuntoVenta.Productos)
+            <div id="ListaTags">
+
             </div>
+            <span>
+                @Html.TextBox("TagInput",null, new { @class = "form-control", placeholder = "", list = "tags" })
+            </span>
         </div>
     </div>
 
     <div id="datalists">
         @Html.DataList("tiposContacto", Model.TiposContacto)
         @Html.DataList("tipos", Model.Tipos)
+        @Html.DataList("servicios", Model.ServiciosEntrega)
     </div>
 
 }
+
+<span id="servicioSpan" style="display: none;">
+    @Html.TextBox("PuntoVenta.ServiciosEntrega[-].Nombre", null, new { list = "servicios", @class = "input-sm form-control", style = "width: 260px;" })
+    <span id="RemovePuntoVenta_ServiciosEntrega_-_" class="glyphicon glyphicon-remove text-center text-danger"></span>
+</span>
+<span id="contactoSpan" style="display: none;">
+    @Html.TextBox("PuntoVenta.Contactos[-].Tipo", null, new { list = "tiposContacto", placeholder = "Tipo", @class = "pull-left form-control input-sm tipo-contacto" })
+    @Html.TextBox("PuntoVenta.Contactos[-].Dato", null, new { @class = "pull-left form-control input-sm dato-contacto" })
+    <span id="RemovePuntoVenta_Contactos_-_" class="glyphicon glyphicon-remove text-center text-danger"></span>
+</span>
+<li id="ubicacionLi" style="display: none;">
+    <strong id="Ubicaciones_-__Descripcion" name="Ubicaciones[-].Descripcion"></strong>
+    <span class="btn btn-sm glyphicon glyphicon-edit"></span>
+    <span class="btn btn-sm glyphicon glyphicon-remove"></span>
+    <div id="Ubicaciones_-__Direccion" name="Ubicaciones[-].Direccion"></div>
+    @Html.Hidden("PuntoVenta.Ubicaciones[-].Latitud")
+    @Html.Hidden("PuntoVenta.Ubicaciones[-].Longitud")
+    @Html.Hidden("PuntoVenta.Ubicaciones[-].Direccion")
+    @Html.Hidden("PuntoVenta.Ubicaciones[-].Descripcion")
+</li>

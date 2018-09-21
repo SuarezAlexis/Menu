@@ -11,5 +11,6 @@ namespace Menu.Models
         public PuntoVenta PuntoVenta { get; set; }
         public IEnumerable<SelectListItem> Tipos { get; set; }
         public IEnumerable<SelectListItem> TiposContacto { get; set; }
+        public IEnumerable<SelectListItem> ServiciosEntrega { get; set; }
     }
 }

@@ -157,8 +157,28 @@ input[id^="PuntoVenta_Contactos"][id$="_Dato"] {
     margin-left: 10px;
 }
 
-[id^="RemovePuntoVenta_Contactos"] {
+[id^="RemovePuntoVenta_"] {
     width:20px; 
     padding-top: 5px; 
     cursor: pointer;
+}
+
+.form-plus-btn {
+    margin: 10px 0; 
+    width: 280px; 
+    display: table;
+}
+.form-plus-btn > .glyphicon-plus-sign {
+    cursor: pointer;
+    color: #000;
+}
+.form-plus-btn > .glyphicon-plus-sign:hover {
+    color: #777;
+}
+.form-plus-btn > span.disabled {
+    color: #aaa;
+    cursor: default;
+}
+.form-plus-btn > span.disabled:hover {
+    color: #aaa;
 }

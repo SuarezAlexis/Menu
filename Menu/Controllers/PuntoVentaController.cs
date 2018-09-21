@@ -29,8 +29,8 @@ namespace Menu.Controllers
             {
                 PuntoVenta = new PuntoVenta(),
                 Tipos = TiposPV(Repo.TiposPV),
-                TiposContacto = TiposContacto(Repo.TiposContacto)
-                
+                TiposContacto = TiposContacto(Repo.TiposContacto),
+                ServiciosEntrega = ServiciosEntrega(Repo.ServiciosEntrega)
             };
             return PartialView(Model);
         }
@@ -47,6 +47,12 @@ namespace Menu.Controllers
             List<SelectListItem> lista = new List<SelectListItem>();
             foreach (TipoPV t in tipos) { lista.Add(new SelectListItem { Text = t.TipoPuntoVenta }); }
             return lista;
+        }
+        private IEnumerable<SelectListItem> ServiciosEntrega(IEnumerable<ServicioEntrega> servicios)
+        {
+            List<SelectListItem> lista = new List<SelectListItem>();
+            foreach(ServicioEntrega s in servicios) { lista.Add(new SelectListItem { Text = s.Nombre, Value = s.ID.ToString() }); }
+            return lista;   
         }
     }
 }

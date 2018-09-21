@@ -17,6 +17,7 @@ namespace Menu.Domain.Entities
         public string Nombre { get; set; }
         public TipoPV Tipo { get; set; }
         public IEnumerable<Tag> Tags { get; set; }
+        [Display(Name ="Servicios de entrega")]
         public IEnumerable<ServicioEntrega> ServiciosEntrega { get; set; }
         public bool ServicioEntrega { get { return ServiciosEntrega != null && ServiciosEntrega.Count() > 0; } }
         public IEnumerable<Contacto> Contactos { get; set; }
@@ -201,20 +202,8 @@ namespace Menu.Domain.Entities
     {
         public long ID { get; set; }
         public PuntoVenta PuntoVenta { get; set; }
-        [MaxLength(20, ErrorMessage = "No puede contener más de 20 carácteres")]
-        public string Pais { get; set; }
-        [MaxLength(30, ErrorMessage = "No puede contener más de 30 carácteres")]
-        public string Estado { get; set; }
-        [MaxLength(30, ErrorMessage = "No puede contener más de 30 carácteres")]
-        public string Municipio { get; set; }
-        [MaxLength(30, ErrorMessage = "No puede contener más de 30 carácteres")]
-        public string Colonia { get; set; }
-        [MaxLength(30, ErrorMessage = "No puede contener más de 30 carácteres")]
-        public string Calle { get; set; }
-        [MaxLength(30, ErrorMessage = "No puede contener más de 30 carácteres")]
-        public string Numero { get; set; }
-        [MaxLength(7, ErrorMessage = "No puede contener más de 7 carácteres")]
-        public string CodigoPostal { get; set; }
+        [MaxLength(128, ErrorMessage = "No puede contener más de 128 carácteres")]
+        public string Direccion { get; set; }
         public decimal Latitud { get; set; }
         public decimal Longitud { get; set; }
         [MaxLength(256, ErrorMessage = "No puede contener más de 256 carácteres")]

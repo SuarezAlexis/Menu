@@ -118,9 +118,11 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\PuntoVenta\Contacto.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PuntoVenta\ServicioEntrega.js" />
     <Content Include="Scripts\Site.js" />
     <Content Include="Web.config" />
   </ItemGroup>
